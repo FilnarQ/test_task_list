@@ -1,0 +1,60 @@
+mat-toolbar {
+    button {
+        margin-left: auto;
+        width: 96px;
+    }
+    
+    .mat-menu-item {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        mat-icon {
+            margin: auto 4px;
+        }
+    }
+}
+
+mat-card{
+    width: 50%;
+    min-width: fit-content;
+    max-width: inherit;
+    margin: auto;
+    overflow-wrap: anywhere;
+    overflow: hidden;
+    mat-list{
+        width: 100%;
+    }
+}
+
+.flex-class{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.w-full{
+    width: max-content;
+}
+.number{
+    margin: auto 10px;
+    font-weight: 700;
+}
+.name{
+    text-overflow:clip;
+    max-width:inherit;
+}
+.name-crop{
+    flex-grow: 1;
+}
+.spacer{
+    flex-grow: 5;
+    flex-shrink: 5;
+}
+
+.input-wrap{
+    margin: 16px;
+    mat-form-field{
+        flex-grow: 5;
+        width: 70%;
+    }
+}

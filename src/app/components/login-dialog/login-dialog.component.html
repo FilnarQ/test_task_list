@@ -1,0 +1,12 @@
+<div>
+    <p mat-dialog-title>Login</p>
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput #u>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput #p type="password">
+    </mat-form-field>
+    <button mat-button [matDialogClose]="{username:u.value, password:p.value}">login</button>
+</div>

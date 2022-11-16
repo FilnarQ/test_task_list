@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+  <span>Test task list</span>
+  <div class="spacer"></div>
+  <button mat-button [mat-menu-trigger-for]="usersMenu">{{user.username}}</button>
+  <mat-menu #usersMenu>
+    <button mat-menu-item *ngFor="let user of userList; index as i" (click)="changeUser(i)">
+      <mat-icon>person</mat-icon>
+      <span>{{user.username}}</span>
+    </button>
+    <button mat-menu-item class="w-full align-center" (click)="showLoginDialog()"> Add user </button>
+  </mat-menu>
+</mat-toolbar>
+<mat-card>
+  <mat-list cdkDropList (cdkDropListDropped)="drop($event)">
+    <span *ngIf="user.order.length==0"> List is empty</span>
+    <div cdkDrag *ngFor="let el of user.order; index as i; trackBy: tracker">
+      <div mat-list-item class="flex-class">
+        <div class="name-crop">
+          <span class="number">{{i+1}}</span>
+          <span class="name" *ngIf="edit!=i">{{list.get(el)}}</span>
+          <input *ngIf="edit==i" #editor [(ngModel)]="editText" (keyup.enter)="editEl(el,editText); edit = -1;">
+        </div>
+        <div class="spacer"></div>
+        <div class="flex-class">
+          <button mat-icon-button *ngIf="edit!=i" color="confirm" (click)="editText = list.get(el)||'';edit = i;editFocus()"><mat-icon>edit</mat-icon></button>
+          <button mat-icon-button *ngIf="edit==i" color="confirm" (click)="editEl(el,editText); edit = -1;"><mat-icon>done</mat-icon></button>
+          <button mat-icon-button color="warn" (click)="deleteEl(el); user.order.length==0?newEl.focus():0"><mat-icon>delete</mat-icon></button>
+        </div>
+      </div>
+    </div>
+    <div class="input-wrap flex-class">
+      <mat-form-field>
+        <input matInput type="text" #newEl class="" (keyup.enter)="addEl(newEl.value); newEl.value=''; newEl.focus()">
+      </mat-form-field>
+      <button mat-button color="primary" (click)="addEl(newEl.value); newEl.value=''; newEl.focus()">Add</button>
+    </div>
+  </mat-list>
+</mat-card>
