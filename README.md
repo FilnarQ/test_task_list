@@ -4,6 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Launching server
 You need to have `npm` installed.
-Run `npm start` in project root directory to start server. Navigate to `http://localhost:4200/`.
+Run `npm i` in project root directory to install dependencies.
+Run `npm start` to start server. Navigate to `http://localhost:4200/`.
 In some rare cases you need to install Angular CLI globally
 `npm i -g @angular/cli`
